@@ -15,7 +15,6 @@ public class Main extends PApplet {
 
 	private Preview p;
 	private String reminderData;
-	private boolean previewMode;
 	private ArrayList<Reminder> reminders;
 
 	public static void main(String[] args) {
@@ -31,7 +30,6 @@ public class Main extends PApplet {
 	public void setup() {
 
 		reminders = new ArrayList<Reminder>();
-		previewMode = false;
 
 		// <–– Example ––>
 		reminders.add(new Reminder(this, 300, 200, "Este es un recordatorio de prueba", 1));
@@ -73,10 +71,11 @@ public class Main extends PApplet {
 		background(30);
 		drawReminders();
 		drawPreview();
-		
+
+		// <–– Instruction ––>
 		fill(80);
 		textAlign(PConstants.CENTER, PConstants.CENTER);
-		text("Puedes mover los recordatorios y organizarlos. No los arrastres muy cerca :)", width/2, height - 20);
+		text("Puedes mover los recordatorios y organizarlos. No los arrastres muy cerca :)", width / 2, height - 20);
 
 	}
 
@@ -125,6 +124,7 @@ public class Main extends PApplet {
 
 	}
 
+	// <–– Create reminder ––>
 	public void addReminder(int posX, int posY, String reminderTxt, int impLevel) {
 
 		p = null;
@@ -132,12 +132,14 @@ public class Main extends PApplet {
 
 	}
 
+	// <–– Create preview ––>
 	public void createPreview(int posX, int posY, String reminderTxt, int impLevel) {
 
 		p = new Preview(this, posX, posY, reminderTxt, impLevel);
 
 	}
 
+	// <–– Move reminder ––>
 	public void mouseDragged() {
 
 		for (int i = 0; i < reminders.size(); i++) {
@@ -151,6 +153,7 @@ public class Main extends PApplet {
 		}
 	}
 
+	// <–– Release reminder ––>
 	public void mouseReleased() {
 
 		int posX = mouseX;
